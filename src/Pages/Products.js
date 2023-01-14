@@ -2,15 +2,17 @@ import { useEffect, useState } from "react";
 import React from "react";
 import axios from "axios";
 import CardComp from "../Components/CardComp";
+import { useAuth0 } from "@auth0/auth0-react";
 
 function Products(props) {
   const [prodList, setProdList] = useState([]);
-
-  useEffect(() => {
-    const getApiCall = async () => {
-      let prodsData = await axios.get("http://localhost:3001/product");
+  const { user } = useAuth0();
+  const getApiCall = async () => {
+      let prodsData = await axios.get(`http://localhost:3001/product?username=${user.email}`);
       setProdList(prodsData.data);
     };
+
+  useEffect(() => {
     getApiCall();
   }, []);
 

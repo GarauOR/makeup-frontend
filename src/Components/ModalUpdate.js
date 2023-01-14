@@ -2,8 +2,11 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from 'react-bootstrap/Form';
 import Update from "./Update";
+import { useAuth0 } from "@auth0/auth0-react";
 
 function ModalUpdate(props) {
+  const { user } = useAuth0();
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -11,6 +14,7 @@ function ModalUpdate(props) {
       name: e.target.name.value,
       brand: e.target.brand.value,
       imageUrl: e.target.img.value,
+      username: user.email || user.nickname
     };
     Update(props.item._id, prod, props.setProdList);
     props.handleClose();
@@ -50,6 +54,7 @@ function ModalUpdate(props) {
                 name="img"
               />
             </Form.Group>
+            
             <Button variant="primary" type="submit">
               Update
             </Button>
