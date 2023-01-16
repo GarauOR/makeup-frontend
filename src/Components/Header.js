@@ -16,6 +16,7 @@ function Header(props) {
           <Navbar.Brand href="/">MAKE-UP</Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link href="/">Products</Nav.Link>
+            {isAuthenticated && <Nav.Link href="/favourites">My Favs</Nav.Link>}
             <Nav.Link href="/about">About</Nav.Link>
             {isAuthenticated && <p style={{color:"grey", margin:"auto 20px"}}>{`Welcome ${user.name}`}</p>}
             <Login />

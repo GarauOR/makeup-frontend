@@ -1,18 +1,20 @@
 import { useEffect, useState } from "react";
 import React from "react";
 import axios from "axios";
-import CardComp from "../Components/CardComp";
-import { useAuth0 } from "@auth0/auth0-react";
+import CardList from "../Components/CardList";
 
 function Products(props) {
   const [prodList, setProdList] = useState([]);
-  const { user } = useAuth0();
-  const getApiCall = async () => {
-      let prodsData = await axios.get(`http://localhost:3001/product?username=${user.email}`);
+
+  useEffect(() => {
+
+    const getApiCall = async () => {
+      let prodsData = await axios.get(
+        `http://localhost:3001/prodList`
+      );
       setProdList(prodsData.data);
     };
 
-  useEffect(() => {
     getApiCall();
   }, []);
 
@@ -27,13 +29,10 @@ function Products(props) {
           padding: "4rem",
         }}
       >
-        {prodList.length>0 ? (
-          prodList.map((item, idx) => {return(
-            <CardComp item={item} key={idx} setProdList={setProdList} />);
+        {prodList.map((item, idx) => {
+            return <CardList item={item} key={idx} />;
           })
-        ) : (
-          <h3>The List is Empty.</h3>
-        )}
+        }
       </div>
     </div>
   );

@@ -2,10 +2,8 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from 'react-bootstrap/Form';
 import Update from "./Update";
-import { useAuth0 } from "@auth0/auth0-react";
 
 function ModalUpdate(props) {
-  const { user } = useAuth0();
 
 
   const handleSubmit = (e) => {
@@ -14,9 +12,9 @@ function ModalUpdate(props) {
       name: e.target.name.value,
       brand: e.target.brand.value,
       imageUrl: e.target.img.value,
-      username: user.email || user.nickname
+      username: props.username
     };
-    Update(props.item._id, prod, props.setProdList);
+    Update(props.item._id, prod, props.setProdList, props.username);
     props.handleClose();
   };
 
@@ -53,14 +51,16 @@ function ModalUpdate(props) {
                 type="text"
                 name="img"
               />
+              
             </Form.Group>
-            
-            <Button variant="primary" type="submit">
+              <Button variant="primary" type="submit">
               Update
             </Button>
+            
           </Form>
         </Modal.Body>
         <Modal.Footer>
+        
           <Button variant="secondary" onClick={props.handleClose}>
             Close
           </Button>

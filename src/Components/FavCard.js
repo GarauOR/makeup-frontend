@@ -4,7 +4,7 @@ import Card from "react-bootstrap/Card";
 import Delete from "./Delete";
 import ModalUpdate from "./ModalUpdate";
 
-function CardComp(props) {
+function FavCard(props) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -30,9 +30,10 @@ function CardComp(props) {
         show={show}
         handleClose={handleClose}
         setProdList={props.setProdList}
+        username={props.username}
       />
     </div>
   );
 }
 
-export default CardComp;
+export default FavCard;
