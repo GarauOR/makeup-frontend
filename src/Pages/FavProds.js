@@ -5,14 +5,16 @@ import FavCard from "../Components/FavCard";
 import { useAuth0 } from "@auth0/auth0-react";
 
 function FavProds(props) {
+
   const [prodList, setProdList] = useState([]);
   const { user } = useAuth0();
+  const [serverURL, setServerURL] = useState(process.env.REACT_APP_SERVER);
 
   useEffect(() => {
 
     const getApiCall = async () => {
       let prodsData = await axios.get(
-        `${REACT_APP_SERVER_URL}/product?username=${user.email || user.nickname}`
+        `${serverURL}/product?username=${user.email || user.nickname}`
       );
       setProdList(prodsData.data);
     };
@@ -33,7 +35,7 @@ function FavProds(props) {
       >
         {prodList.length > 0 ? (
           prodList.map((item, idx) => {
-            return <FavCard item={item} key={idx} setProdList={setProdList} username={user.email || user.nickname} />;
+            return <FavCard item={item} key={idx} setProdList={setProdList} username={user.email || user.nickname} serverURL={serverURL} />;
           })
         ) : (
           <h3>The List is Empty.</h3>

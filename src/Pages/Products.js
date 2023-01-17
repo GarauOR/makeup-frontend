@@ -4,13 +4,15 @@ import axios from "axios";
 import CardList from "../Components/CardList";
 
 function Products(props) {
+
   const [prodList, setProdList] = useState([]);
+  const [serverLink, setServerLink] = useState(process.env.REACT_APP_SERVER);
 
   useEffect(() => {
 
     const getApiCall = async () => {
       let prodsData = await axios.get(
-        `${REACT_APP_SERVER_URL}/prodList`
+        `${serverLink}/prodList`
       );
       setProdList(prodsData.data);
     };
@@ -30,7 +32,7 @@ function Products(props) {
         }}
       >
         {prodList.map((item, idx) => {
-            return <CardList item={item} key={idx} />;
+            return <CardList item={item} key={idx} serverLink={serverLink} />;
           })
         }
       </div>

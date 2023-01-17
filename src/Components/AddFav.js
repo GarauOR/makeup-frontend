@@ -9,7 +9,7 @@ function AddFav(props, user) {
         username: user.email || user.nickname,
     };
     const addToFavs = async () => {
-        await axios.post(`${REACT_APP_SERVER_URL}/product`, item);
+        await axios.post(`${props.serverLink}/product`, item);
     }
     addToFavs();
 }

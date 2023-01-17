@@ -14,7 +14,7 @@ function ModalUpdate(props) {
       imageUrl: e.target.img.value,
       username: props.username
     };
-    Update(props.item._id, prod, props.setProdList, props.username);
+    Update(props.item._id, prod, props.setProdList, props.username, props.serverURL);
     props.handleClose();
   };
 

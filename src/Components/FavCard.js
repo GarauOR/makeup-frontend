@@ -31,6 +31,7 @@ function FavCard(props) {
         handleClose={handleClose}
         setProdList={props.setProdList}
         username={props.username}
+        serverURL={props.serverURL}
       />
     </div>
   );
