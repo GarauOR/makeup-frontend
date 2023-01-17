@@ -1,4 +1,3 @@
-import React from 'react';
 import axios from 'axios';
 
 function AddFav(props, user) {
@@ -10,7 +9,7 @@ function AddFav(props, user) {
         username: user.email || user.nickname,
     };
     const addToFavs = async () => {
-        await axios.post("http://localhost:3001/product", item);
+        await axios.post(`${REACT_APP_SERVER_URL}/product`, item);
     }
     addToFavs();
 }

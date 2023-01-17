@@ -4,7 +4,7 @@ function Delete(props) {
 
   const deleteItemByID = async () => {
     let deleteProdCall = await axios.delete(
-      `http://localhost:3001/product/${props.item._id}?username=${
+      `${REACT_APP_SERVER_URL}/product/${props.item._id}?username=${
         props.username
       }`
     );

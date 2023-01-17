@@ -12,7 +12,7 @@ function FavProds(props) {
 
     const getApiCall = async () => {
       let prodsData = await axios.get(
-        `http://localhost:3001/product?username=${user.email || user.nickname}`
+        `${REACT_APP_SERVER_URL}/product?username=${user.email || user.nickname}`
       );
       setProdList(prodsData.data);
     };

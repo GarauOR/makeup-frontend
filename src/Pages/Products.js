@@ -10,7 +10,7 @@ function Products(props) {
 
     const getApiCall = async () => {
       let prodsData = await axios.get(
-        `http://localhost:3001/prodList`
+        `${REACT_APP_SERVER_URL}/prodList`
       );
       setProdList(prodsData.data);
     };
