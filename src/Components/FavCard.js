@@ -11,17 +11,36 @@ function FavCard(props) {
 
   return (
     <div>
-      <Card style={{ width: "18rem" }} key={props.key}>
-        <Card.Img variant="top" src={props.item.imageUrl} />
-        <Card.Body>
+      <Card style={{ width: "18rem", height: "36rem" }} key={"i" + props.i} className="card-shadow">
+        <Card.Img variant="top" src={props.item.api_featured_image} />
+        <Card.Body className="card-spacing">
           <Card.Title>{props.item.name}</Card.Title>
           <Card.Text>{props.item.brand}</Card.Text>
-          <Button variant="primary" onClick={handleShow}>
-            Update
-          </Button>
-          <Button variant="primary" onClick={() => Delete(props)}>
-            Delete
-          </Button>
+          <div className="fav-button-spacer">
+            <Button
+              variant="outline-dark"
+              onClick={handleShow}
+              className="fav-card-button"
+            >
+              Update
+            </Button>
+            <Button
+              variant="outline-dark"
+              onClick={() => Delete(props)}
+              className="fav-card-button"
+            >
+              Delete
+            </Button>
+            <Button
+              variant="outline-dark"
+              className="fav-card-button"
+              href={props.item.product_link}
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              Shop
+            </Button>
+          </div>
         </Card.Body>
       </Card>
 

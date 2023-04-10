@@ -5,37 +5,47 @@ import FavCard from "../Components/FavCard";
 import { useAuth0 } from "@auth0/auth0-react";
 
 function FavProds(props) {
-
   const [prodList, setProdList] = useState([]);
   const { user } = useAuth0();
-  const [serverURL, setServerURL] = useState(process.env.REACT_APP_SERVER);
 
   useEffect(() => {
-
     const getApiCall = async () => {
-      let prodsData = await axios.get(
-        `${serverURL}/product?username=${user.email || user.nickname}`
-      );
-      setProdList(prodsData.data);
+      if (user) {
+        let prodsData = await axios.get(
+          `${process.env.REACT_APP_SERVER}/product?username=${
+            user.email || user.nickname
+          }`
+        );
+        setProdList(prodsData.data);
+      }
     };
 
     getApiCall();
-  }, [user]);
+  }, [user, prodList]);
 
   return (
-    <div>
-      <h1>My Favourite Products</h1>
+    <div style={{width: "100%", textAlign: "center"}}>
+      <h1 className="title">MY FAVOURITE PRODUCTS</h1>
       <div
         style={{
           display: "flex",
           flexFlow: "row",
           flexWrap: "wrap",
           padding: "4rem",
+          justifyContent: "center",
         }}
       >
         {prodList.length > 0 ? (
-          prodList.map((item, idx) => {
-            return <FavCard item={item} key={idx} setProdList={setProdList} username={user.email || user.nickname} serverURL={serverURL} />;
+          prodList.map((item, i) => {
+            return (
+              <FavCard
+                item={item}
+                indx={i.toString()}
+                setProdList={setProdList}
+                username={user.email || user.nickname}
+                serverURL={process.env.REACT_APP_SERVER}
+              />
+            );
           })
         ) : (
           <h3>The List is Empty.</h3>

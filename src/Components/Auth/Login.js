@@ -1,12 +1,12 @@
 import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 
-const Login = () => {
+const Login = (props) => {
   const { isAuthenticated, loginWithRedirect } = useAuth0();
 
   return (
     !isAuthenticated && (
-      <a href="#" onClick={() => loginWithRedirect()} style={{color:"grey", margin:"auto 20px"}}>Log In</a>
+      <a href="#" onClick={() => loginWithRedirect()} className={props.className}>Log In</a>
     )
   );
 };

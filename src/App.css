@@ -1,38 +1,181 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
+* {
+  box-sizing: border-box;
+  font-family: 'Varela Round', sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.hide {
+  display: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* HEADER START */
+
+#burgermenu {
+  width: 33px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+#search {
+  width: 50%;
+  height: 33px;
+}
+
+#search-btn {
+  padding-top: 4px;
+}
+
+#logo {
+  font-size: 2rem;
+  color: rgb(139, 0, 90);
+  letter-spacing: -0.45rem;
+}
+
+.nav-log {
+  margin: auto 20px;
+}
+
+.nav-log a {
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.nav-log a:hover {
+  color: lightgrey;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+#burgerlist {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  border: 1px;
+  border-color: rgb(214, 214, 214);
+  border-radius: 7px;
+  border-style: solid;
+  padding: 7px 0px;
+  width:min-content;
+  background-color: rgb(251, 251, 251);
+  position: absolute;
+  top: 30px;
+  left: 4px;
+  z-index: 1;
+}
+
+#burgerlist a {
+  color: black;
+}
+
+#burgerlist a:hover {
+  background-color: rgb(233, 233, 233);
+  color: rgba(0, 0, 0, 0.08);
+}
+
+a:link {
+  text-decoration-line: none;
+}
+
+.linkNav {
+  color: white;
+}
+
+.nav-filter-hover a:hover {
+  color: lightgrey;
+}
+
+#burger-filter {
+  color: black;
+  background-color: none;
+  border-color: none;
+  border: 0px;
+  margin: 0px;
+  padding: 5px 81px 5px 10px;
+  border-radius: 0px;
+  width:100%;
+}
+
+#burger-filter:hover {
+  background-color: rgb(233, 233, 233);
+  color: rgba(0, 0, 0, 0.08);
+}
+
+.burger-item {
+  width: 100%;
+  padding: 5px 60px 5px 10px;
+}
+
+/* HEADER END */
+
+/* PRODUCTS START */
+.title {
+  letter-spacing: 1rem;
+  text-align: center;
+  margin: 20px auto -20px;
+  color: rgb(139, 0, 90);
+  font-weight: 600;
+}
+
+.card-button:hover {
+  background-color: rgb(139, 0, 90);
+  border-color: rgb(139, 0, 90);
+}
+
+.card-spacing {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  padding-bottom: 40px;
+}
+
+.card-shadow {
+  box-shadow: 0px 0px 20px lightgrey;
+  position: relative;
+}
+/* PRODUCTS END */
+
+/* FAVOURITES START */
+.fav-button-spacer {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  position: absolute;
+  bottom: 10px;
+}
+
+.fav-card-button:hover {
+  background-color: rgb(139, 0, 90);
+  border-color: rgb(139, 0, 90);
+}
+/* FAVOURITES END */
+
+/* ABOUT START */
+.about {
+  margin: 70px 10% 50px;
+}
+
+#about-span {
+  margin: 0px 0px 5px;
+  display: block;
+}
+/* ABOUT END */
+
+@media only screen and (min-width: 1000px) {
+  .hide {
+    display: initial;
   }
-  to {
-    transform: rotate(360deg);
+
+  /* HEADER START */
+  #burgermenu {
+    display: none;
   }
+  
+  #search {
+    width:initial;
+    height:initial;
+  }
+  
+  #search-btn {
+    padding-top: 6px;
+  }
+  /* HEADER END */
+
 }
